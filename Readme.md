@@ -299,8 +299,8 @@ he wants to play.
 I know you love that, well you can in bulk:
 
 * Change the number of lines.
-* Add any graphical version
-* Have the choice between several difficulty levels (my_select?).
+* Add any graphical version.
+* Have the choice between several difficulty levels.
 
 
 ## <a name='credits'>🐵 Credits</a>
