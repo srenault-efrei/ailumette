@@ -50,8 +50,8 @@ Aillumette is a game based on matches.
 ```sh
 $ node ailumette
 *********
- * | *
- * ||| *
+ *   |   *
+ *  |||  *
  * ||||| *
  *|||||||*
  *********
@@ -61,19 +61,19 @@ $ node ailumette
  Matches: 2
  Player removed 2 match(es) from line 4
  *********
- * | *
- * ||| *
+ *   |   *
+ *  |||  *
  * ||||| *
- *||||| *
+ *|||||  *
  *********
 
  AI’s turn...
  AI removed 2 match(es) from line 3
  *********
- * | *
- * ||| *
- * ||| *
- *||||| *
+ *   |   *
+ *  |||  *
+ *  |||  *
+ *|||||  *
  *********
 
  Your turn:
@@ -81,19 +81,19 @@ $ node ailumette
  Matches: 1
  Player removed 1 match(es) from line 1
  *********
- * *
- * ||| *
- * ||| *
- *||||| *
+ *       *
+ *  |||  *
+ *  |||  *
+ *|||||  *
  *********
 
  AI’s turn...
  AI removed 1 match(es) from line 2
  *********
- * *
- * || *
- * ||| *
- *||||| *
+ *       *
+ * ||    *
+ * |||   *
+ *|||||  *
  *********
 
  Your turn:
@@ -101,19 +101,19 @@ $ node ailumette
  Matches: 2
  Player removed 2 match(es) from line 2
  *********
- * *
- * *
- * ||| *
- *||||| *
+ *       *
+ *       *
+ * |||   *
+ *|||||  *
  *********
 
  AI’s turn...
  AI removed 2 match(es) from line 4
  *********
- * *
- * 
- * ||| *
- *||| *
+ *       *
+ *       *
+ * |||   *
+ *|||    *
  *********
 
  Your turn:
@@ -121,19 +121,19 @@ $ node ailumette
  Matches: 1
  Player removed 1 match(es) from line 3
  *********
- * *
- * *
- * || *
- *||| *
+ *       *
+ *       *
+ * ||    *
+ *|||    *
  *********
 
  AI’s turn...
  AI removed 2 match(es) from line 3
  *********
- * *
- * *
- * *
- *||| *
+ *       *
+ *       *
+ *       *
+ *|||    *
  *********
 
  Your turn:
@@ -141,19 +141,19 @@ $ node ailumette
  Matches: 2
  Player removed 2 match(es) from line 4
  *********
- * *
- * *
- * *
- *| *
+ *       *
+ *       *
+ *       *
+ *|      *
  *********
 
  AI’s turn...
  AI removed 1 match(es) from line 4
  *********
- * *
- * *
- * *
- * *
+ *       *
+ *       *
+ *       *
+ *       *
  *********
  I lost.. snif.. but I’ll get you next time!!
  ```
@@ -161,8 +161,8 @@ $ node ailumette
  ```sh
  $ node ailumette
  *********
- * | *
- * ||| *
+ * |     *
+ * |||   *
  * ||||| *
  *|||||||*
  *********
@@ -195,18 +195,18 @@ $ node ailumette
  Matches: 2
  Player removed 2 match(es) from line 3
  *********
- * | *
- * ||| *
- * ||| *
+ * |     *
+ * |||   *
+ * |||   *
  *|||||||*
  *********
 
  AI’s turn...
  AI removed 1 match(es) from line 4
  *********
- * | *
- * ||| *
- * ||| *
+ * |     *
+ * |||   *
+ * |||   *
  *|||||| *
  *********
 
@@ -215,19 +215,19 @@ $ node ailumette
  Matches: 1
  Player removed 1 match(es) from line 1
  *********
- * *
- * ||| *
- * ||| *
+ *       *
+ * |||   *
+ * |||   *
  *|||||| *
  *********
 
  AI’s turn...
  AI removed 6 match(es) from line 4
  *********
- * *
- * ||| *
- * ||| *
- * *
+ *       *
+ * |||   *
+ * |||   *
+ *       *
  *********
 
  Your turn:
@@ -237,19 +237,19 @@ $ node ailumette
  Matches: 2
  Player removed 2 match(es) from line 2
  *********
- * *
- * | *
- * ||| *
- * *
+ *       *
+ * |     *
+ * |||   *
+ *       *
  *********
 
  AI’s turn...
  AI removed 1 match(es) from line 2
  *********
- * *
- * *
- * ||| *
- * *
+ *       *
+ *       *
+ * |||   *
+ *       *
  *********
 
  Your turn:
@@ -257,19 +257,19 @@ $ node ailumette
  Matches: 1
  Player removed 1 match(es) from line 3
  *********
- * *
- * *
- * || *
- * *
+ *       *
+ *       *
+ * ||    *
+ *       *
  *********
 
  AI’s turn...
  AI removed 1 match(es) from line 3
  *********
- * *
- * *
- * | *
- * *
+ *       *
+ *       *
+ * |     *
+ *       *
  *********
 
  Your turn:
@@ -277,10 +277,10 @@ $ node ailumette
  Matches: 1
  Player removed 1 match(es) from line 3
  *********
- * *
- * *
- * *
- * *
+ *       *
+ *       *
+ *       *
+ *       *
  *********
  You lost, too bad..
  ```
