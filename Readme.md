@@ -161,8 +161,8 @@ $ node ailumette
  ```sh
  $ node ailumette
  *********
- * |     *
- * |||   *
+ *   |   *
+ *  |||  *
  * ||||| *
  *|||||||*
  *********
@@ -195,8 +195,8 @@ $ node ailumette
  Matches: 2
  Player removed 2 match(es) from line 3
  *********
- * |     *
- * |||   *
+ *  |    *
+ *  |||  *
  * |||   *
  *|||||||*
  *********
@@ -204,8 +204,8 @@ $ node ailumette
  AI’s turn...
  AI removed 1 match(es) from line 4
  *********
- * |     *
- * |||   *
+ *   |   *
+ *  |||  *
  * |||   *
  *|||||| *
  *********
@@ -216,7 +216,7 @@ $ node ailumette
  Player removed 1 match(es) from line 1
  *********
  *       *
- * |||   *
+ *  |||  *
  * |||   *
  *|||||| *
  *********
@@ -225,7 +225,7 @@ $ node ailumette
  AI removed 6 match(es) from line 4
  *********
  *       *
- * |||   *
+ *  |||  *
  * |||   *
  *       *
  *********
@@ -238,7 +238,7 @@ $ node ailumette
  Player removed 2 match(es) from line 2
  *********
  *       *
- * |     *
+ *  |    *
  * |||   *
  *       *
  *********
