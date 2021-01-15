@@ -1,4 +1,3 @@
-const { match } = require("assert");
 const chalk = require("chalk");
 const readline = require("readline");
 
@@ -28,71 +27,96 @@ module.exports = map = () => {
       } else {
         grille[x][y] = " ";
       }
-      grille[x][5] = "*";
+      grille[x][y_length - 1] = "*";
       grille[x][0] = "*";
     }
   }
   // console.log(grille);
   parseDisplayMapUser(grille);
 
-  display(grille, x_length, y_length);
+  display(grille, x_length, y_length, false);
 };
 
 // DEMANDE A L'USER SA LIGNE ET SES MATCHES
-const display = (grille, x_length, y_length) => {
+const display = (grille, x_length, y_length, isPlayer) => {
   let line;
   let matches;
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
+  if (isPlayer === false) {
+    console.log("A ton tour : ");
 
-  console.log("Your turn : ");
-
-  rl.question("Ligne : ", function (data) {
-    data = parseInt(data);
-    line = data;
-    if (erroMessageLine(x_length, data) === true) {
-      display(grille, x_length, y_length);
-    } else if (erroMessageLine(x_length, data) === false) {
-      rl.question("Matchs : ", function (dataMatches) {
-        dataMatches = parseInt(dataMatches);
-        matches = dataMatches;
-        if (errorMessageMatches(grille, dataMatches, data) === true) {
-          display(grille, x_length, y_length);
-        } else {
-          rl.close();
-        }
-      });
-    }
-  });
-  rl.on("close", function () {
-    editMap(grille, line, matches, x_length, y_length);
-  });
+    rl.question("Ligne : ", function (data) {
+      data = parseInt(data);
+      line = data;
+      if (erroMessageLine(x_length, data) === true) {
+        display(grille, x_length, y_length, isPlayer);
+      } else if (erroMessageLine(x_length, data) === false) {
+        rl.question("Matchs : ", function (dataMatches) {
+          dataMatches = parseInt(dataMatches);
+          matches = dataMatches;
+          if (errorMessageMatches(grille, dataMatches, data) === true) {
+            display(grille, x_length, y_length, isPlayer);
+          } else {
+            rl.close();
+          }
+        });
+      }
+    });
+    rl.on("close", function () {
+      editMap(grille, line, matches, x_length, y_length, isPlayer);
+    });
+  } else {
+    editMap(grille, null, null, x_length, y_length, isPlayer);
+  }
 };
 
 // EDIT LA MAP SELON LES CHOIX DE LA LIGNE ET DES MATCHES
-const editMap = (grille, line, matches, x_length, y_length) => {
+const editMap = (
+  grille,
+  line = null,
+  matches = null,
+  x_length,
+  y_length,
+  isPlayer
+) => {
   let result = grille[line];
-  // console.log("grille ", result);
 
-  for (let i = 0; i < matches; i++) {
-    let index = result.indexOf("|");
-    // console.log("index", index);
-    // console.log("char", grille[line][index]);
-    grille[line][index] = " ";
-    result = grille[line];
-    // console.log("result", result);
+  if (isPlayer === false) {
+    for (let i = 0; i < matches; i++) {
+      let index = result.indexOf("|");
+      grille[line][index] = " ";
+      result = grille[line];
+    }
+    grille[line] = result;
+
+    console.log(
+      `Le joueur a supprimé ${matches} match(s) de la ligne ${line} `
+    );
+  } else {
+    let found = false;
+    let matchesIa = -1;
+    let lineIa = -1;
+
+    for (let i = 0; i < x_length; i++) {
+      if (grille[i].includes("|") && found === false) {
+        let index = grille[i].indexOf("|");
+        grille[i][index] = " ";
+        found = true;
+        lineIa = i;
+        matchesIa = 1;
+      }
+    }
+    console.log(`L'ia a supprimé ${matchesIa} match(s) de la ligne ${lineIa} `);
   }
-  grille[line] = result;
-
-  console.log(`Le joueur a supprimé ${matches} match(s) de la ligne ${line} `);
 
   // console.log("final", grille);
   parseDisplayMapUser(grille);
 
-  if (end(grille) === true) {
-    display(grille, x_length, y_length);
+  if (end(grille, !isPlayer) === true) {
+    display(grille, x_length, y_length, !isPlayer);
   }
 };
 
@@ -159,17 +183,21 @@ const defineCorrespondance = (grille, line) => {
 
 //  DETERMINE LE VAINQUEUR ET LA FIN DU JEUX
 
-const end = (grille) => {
+const end = (grille, isPlayer) => {
   let bool = false;
   for (const el of grille) {
     if (el.includes("|")) {
       bool = true;
     }
   }
-  if (bool === false) {
-    console.log(chalk.blue("Vous avez gagné contre l'IA !"));
+  if (bool === false && isPlayer === false) {
+    console.log(chalk.blue("Félicitations, vous avez gagné 🔥 🎉 "));
+    process.exit(0);
+  } else if (bool === false && isPlayer === true) {
+    console.log(chalk.blue("Nul, vous avez perdu 😭 "));
     process.exit(0);
   }
+
   return bool;
 };
 
