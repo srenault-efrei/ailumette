@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 const readline = require("readline");
 
-// INITIALISATION DE LA MAP
+// INITILALIZATION  MAP
 
 module.exports = map = () => {
   let firstPos;
@@ -9,9 +9,9 @@ module.exports = map = () => {
   let thridPos;
 
   let x,
-    x_length = 7, //lignes
+    x_length = 7, // lines
     y,
-    y_length = 6, //colonnes
+    y_length = 6, // columns
     grille = [];
 
   for (x = 0; x < x_length; x++) {
@@ -31,13 +31,12 @@ module.exports = map = () => {
       grille[x][0] = "*";
     }
   }
-  // console.log(grille);
   parseDisplayMapUser(grille);
 
   display(grille, x_length, y_length, false);
 };
 
-// DEMANDE A L'USER SA LIGNE ET SES MATCHES
+// REQUEST THE USER HIS LINE AND MATCHES
 const display = (grille, x_length, y_length, isPlayer) => {
   let line;
   let matches;
@@ -73,7 +72,7 @@ const display = (grille, x_length, y_length, isPlayer) => {
   }
 };
 
-// EDIT LA MAP SELON LES CHOIX DE LA LIGNE ET DES MATCHES
+// EDIT MAP
 const editMap = (
   grille,
   line = null,
@@ -84,6 +83,7 @@ const editMap = (
 ) => {
   let result = grille[line];
 
+  // USER UPDATE
   if (isPlayer === false) {
     for (let i = 0; i < matches; i++) {
       let index = result.indexOf("|");
@@ -95,7 +95,9 @@ const editMap = (
     console.log(
       `Le joueur a supprimé ${matches} match(s) de la ligne ${line} `
     );
-  } else {
+  }
+  // IA UPDATE
+  else {
     let found = false;
     let matchesIa = -1;
     let lineIa = -1;
@@ -112,7 +114,6 @@ const editMap = (
     console.log(`L'ia a supprimé ${matchesIa} match(s) de la ligne ${lineIa} `);
   }
 
-  // console.log("final", grille);
   parseDisplayMapUser(grille);
 
   if (end(grille, !isPlayer) === true) {
@@ -120,12 +121,12 @@ const editMap = (
   }
 };
 
-// RANDOM ALLUMETTES
+// RANDOM MATCHES
 const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-// ERREUR MESSAGE LORS DU CHOIX DE LA LIGNE
+// LINE SELECTION MESSAGE ERROR
 
 const erroMessageLine = (x_length, line) => {
   let isErrorLine = false;
@@ -143,7 +144,7 @@ const erroMessageLine = (x_length, line) => {
   return isErrorLine;
 };
 
-// ERREUR MESSAGE LORS DU CHOIX DES MATCHES
+// MATCH CHOICE MESSAGE ERROR
 
 const errorMessageMatches = (grille, matches, x_length) => {
   let isErrorMatches = false;
@@ -169,7 +170,7 @@ const errorMessageMatches = (grille, matches, x_length) => {
   return isErrorMatches;
 };
 
-// DÉFINIT SI IL Y UNE CORRESPONDANCE  POUR MATCHE
+// DEFINE CORRESPONDENCE FOR THE NUMBER OF MATCHES
 
 const defineCorrespondance = (grille, line) => {
   let compteur = 0;
@@ -181,7 +182,7 @@ const defineCorrespondance = (grille, line) => {
   return compteur;
 };
 
-//  DETERMINE LE VAINQUEUR ET LA FIN DU JEUX
+// INDICATES THE WINNER
 
 const end = (grille, isPlayer) => {
   let bool = false;
@@ -201,6 +202,7 @@ const end = (grille, isPlayer) => {
   return bool;
 };
 
+// DISPLAY THE MAP IN THE FORM OF A STRING
 const parseDisplayMapUser = (grille) => {
   let x,
     x_length = 7, //lignes
