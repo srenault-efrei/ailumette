@@ -93,7 +93,9 @@ const editMap = (
     grille[line] = result;
 
     console.log(
-      `Le joueur a supprimé ${matches} match(s) de la ligne ${line} `
+      chalk.green(
+        `Le joueur a supprimé ${matches} match(s) de la ligne ${line} `
+      )
     );
   }
   // IA UPDATE
@@ -111,7 +113,12 @@ const editMap = (
         matchesIa = 1;
       }
     }
-    console.log(`L'ia a supprimé ${matchesIa} match(s) de la ligne ${lineIa} `);
+
+    console.log(
+      chalk.yellow(
+        `L'IA a supprimé ${matchesIa} match(s) de la ligne ${lineIa}`
+      )
+    );
   }
 
   parseDisplayMapUser(grille);
